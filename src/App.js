@@ -1,29 +1,47 @@
-import React, { useState, useEffect } from 'react';
-import axios from 'axios';
+import React, { useState } from "react";
 import './App.css';
 
-const App = () => {
-  const [quote, setQuote] = useState('');
-  const [author, setAuthor] = useState('');
+function App() {
+  const [quote, setQuote] = useState("");
+  const [author, setAuthor] = useState("");
 
-  useEffect(() => {
-    fetchQuote();
-  }, []);
+  const quotes = [
+    {
+      text: "The only way to do great work is to love what you do.",
+      author: "Steve Jobs"
+    },
+    {
+      text: "Success is not the key to happiness. Happiness is the key to success.",
+      author: "Albert Schweitzer"
+    },
+    {
+      text: "Don't watch the clock; do what it does. Keep going.",
+      author: "Sam Levenson"
+    },
+    {
+      text: "The best time to plant a tree was 20 years ago. The second best time is now.",
+      author: "Chinese Proverb"
+    },
+    {
+      text: "It always seems impossible until it's done.",
+      author: "Nelson Mandela"
+    },
+  ];
 
-  const fetchQuote = async () => {
-    const response = await axios.get('https://api.quotable.io/random');
-    setQuote(response.data.content);
-    setAuthor(response.data.author);
+  const generateQuote = () => {
+    const randomIndex = Math.floor(Math.random() * quotes.length);
+    setQuote(quotes[randomIndex].text);
+    setAuthor(quotes[randomIndex].author);
   };
 
   return (
-    <div className="quote-container">
+    <div className="App">
       <h1>Random Quote Machine</h1>
-      <p className="quote">"{quote}"</p>
-      <p className="author">- {author}</p>
-      <button onClick={fetchQuote}>New Quote</button>
+      <p>{quote}</p>
+      <h3>- {author}</h3>
+      <button onClick={generateQuote}>New Quote</button>
     </div>
   );
-};
+}
 
 export default App;
