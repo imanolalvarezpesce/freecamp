@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/freecamp/static/css/main.efb4fb76.css",
+    "main.js": "/freecamp/static/js/main.5ccd3ff1.js",
+    "static/js/453.f9c040e8.chunk.js": "/freecamp/static/js/453.f9c040e8.chunk.js",
+    "index.html": "/freecamp/index.html",
+    "main.efb4fb76.css.map": "/freecamp/static/css/main.efb4fb76.css.map",
+    "main.5ccd3ff1.js.map": "/freecamp/static/js/main.5ccd3ff1.js.map",
+    "453.f9c040e8.chunk.js.map": "/freecamp/static/js/453.f9c040e8.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.efb4fb76.css",
+    "static/js/main.5ccd3ff1.js"
+  ]
+}
