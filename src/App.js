@@ -1,25 +1,29 @@
-import logo from './logo.svg';
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
 import './App.css';
 
-function App() {
+const App = () => {
+  const [quote, setQuote] = useState('');
+  const [author, setAuthor] = useState('');
+
+  useEffect(() => {
+    fetchQuote();
+  }, []);
+
+  const fetchQuote = async () => {
+    const response = await axios.get('https://api.quotable.io/random');
+    setQuote(response.data.content);
+    setAuthor(response.data.author);
+  };
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="quote-container">
+      <h1>Random Quote Machine</h1>
+      <p className="quote">"{quote}"</p>
+      <p className="author">- {author}</p>
+      <button onClick={fetchQuote}>New Quote</button>
     </div>
   );
-}
+};
 
 export default App;
